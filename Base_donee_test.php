@@ -12,6 +12,6 @@ if (!$connexion) {
 else{
     echo"on est la" ;
 }
-echo"test github"
+
 
 ?>
