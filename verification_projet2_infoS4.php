@@ -12,15 +12,17 @@ if(isset($_POST['username']) && isset($_POST['password']))
  
  // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
  // pour éliminer toute attaque de type injection SQL et XSS
- $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
- $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
+ $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); //va chercher username du html, toute les autre fonction c'est du blabla de sécurité
+ $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password'])); 
+ $id_membre = $_POST['id_membre'];
+ $mail = $_POST['mail'];
  
  if($username !== "" && $password !== "")
  {
  $requete = "SELECT count(*) FROM membre where 
- nom_utilisateur = '".$username."' and mot_de_passe = '".$password."' ";
- $exec_requete = mysqli_query($db,$requete);
- $reponse = mysqli_fetch_array($exec_requete);
+ NOM = '".$username."' and MDP = '".$password."' and ID_MEMBRE = ' ".$id_membre" 'and MAIL = '".$mail" '"; //je met pas l'adresse car blc 
+ $exec_requete = mysqli_query($db,$requete); 
+ $reponse = mysqli_fetch_array($exec_requete);  //tout ça c'est de la vérification, ça transforme des truc en tableau j'avoue j'ai pas tt compris 
  $count = $reponse['count(*)'];
  if($count!=0) // nom d'utilisateur et mot de passe correctes
  {
@@ -34,12 +36,12 @@ if(isset($_POST['username']) && isset($_POST['password']))
  }
  else
  {
- header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
+ header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide jsp si on va laisser tout ça pck c'est chiant 
  }
 }
 else
 {
  header('Location: login.php');
 }
-mysqli_close($db); // fermer la connexion
+mysqli_close($db); // fermer la connexion 
 ?>
