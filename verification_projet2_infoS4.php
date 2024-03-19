@@ -27,11 +27,11 @@ if(isset($_POST['username']) && isset($_POST['password']))
  if($count!=0) // nom d'utilisateur et mot de passe correctes
  {
  $_SESSION['username'] = $username;
- header('Location: principale.php');
+ header('Location: principale.php');//utilisateur ou mot de passe incorrect ici jsp si ça va marcher pour id_membre et mail ?? 
  }
  else
  {
- header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+ header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect ici jsp si ça va marcher pour id_membre et mail ?? 
  }
  }
  else
