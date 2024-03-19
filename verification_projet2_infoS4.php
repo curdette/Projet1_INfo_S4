@@ -20,7 +20,7 @@ if(isset($_POST['username']) && isset($_POST['password']))
  if($username !== "" && $password !== "")
  {
  $requete = "SELECT count(*) FROM membre where 
- NOM = '".$username."' and MDP = '".$password."' and ID_MEMBRE = ' ".$id_membre" 'and MAIL = '".$mail" '"; //je met pas l'adresse car blc 
+ NOM = '".$username."' and MDP = '".$password."' and ID_MEMBRE = ' ".$id_membre." 'and MAIL = '".$mail." '"; //je met pas l'adresse car blc 
  $exec_requete = mysqli_query($db,$requete); 
  $reponse = mysqli_fetch_array($exec_requete);  //tout ça c'est de la vérification, ça transforme des truc en tableau j'avoue j'ai pas tt compris 
  $count = $reponse['count(*)'];
