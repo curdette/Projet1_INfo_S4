@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Projet 2 info</title>
+    </head>
+    <body>
+        <h1 style="text-align: center;"> Projet 2 informarique </h1>
+        <p style="text-align: center;"> Cornet Cybiaé Nicolas Blaye</p>
+        <p> 
+            Ce site permet d'emprunter des livre dans une bibliothèque grâce à un système de connexion, et de panier.
+            <br> <li> FAQ</li> <br> 
+    <body>
+    <div id="container">
+    <!-- zone de connexion -->
+    <h1>Connexion</h1>
+    <form action="projet2_info_verif.php" method="POST">
+    
+    
+    <label><b>ID membre</b></label>
+    <input type="texte" placeholder="Entrer votre num d'identification" name="id_membre" >
+   <br>
+    
+   
+    <label><b>Mot de passe</b></label>
+    <input type="password" placeholder="Entrer le mot de passe" name="password" >
+   <br>
+    <input type="submit" id='submit' value='LOGIN' >
+
+
+    <h1>Inscription</h1>
+        <p> Pas de compte ? inscrivez vous <a href="projet2_info_inscription.html"> ici </a></p>
+    </div>
+    </body>
+</html>
