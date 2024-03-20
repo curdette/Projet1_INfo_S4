@@ -1,0 +1,87 @@
+<html>
+
+<head> 
+    
+    <style>
+    h1{text-align : center;}
+    h2{margin : 10%;}
+    .project {
+        border: 1px solid #c11d1d;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: lightgray;}
+    </style>
+</head>
+
+<body>
+
+
+
+<?php
+
+
+// Informations de connexion à la base de données
+$serveur = "localhost";
+$utilisateur = "root";
+$mot_de_passe = "";
+$base_de_donnees = "projet_info";
+
+// Créer une connexion
+$connexion = new mysqli($serveur, $utilisateur, $mot_de_passe, $base_de_donnees);
+
+// Vérifier la connexion
+if ($connexion->connect_error) {
+    die("Échec de la connexion : " . $connexion->connect_error);}
+
+
+// Selectionne tous les enregistrements de livre
+
+
+$table_avis = "SELECT * FROM avis WHERE ISBN='1000'"; #  A REMPLIR SELON LA PAGE DE PRESENTATION;"
+$livre = "SELECT TITRE FROM livre WHERE ISBN='1000'";
+$result = $connexion->query($table_avis); // [lengths] -> nb_colonnes et [num_rows] -> nb_lignes
+
+$livre = $connexion->query($livre); // Execute la requete pour obtenir le titre du livre
+$titre = $livre->fetch_assoc();     // Obtention du tableau assoc contenant le titre
+$titre = $titre["TITRE"];           // Obtention du titre
+
+
+
+?>
+
+
+
+
+
+    <h1> Espace critique </h1>
+    <br> 
+    <h2> <?php echo $titre ?> </h2> 
+
+    <p>Nombre avis : <?php echo $result->num_rows;?> </p>                   <!-- compte le nombre de lignes enregistrés : $result[num_rows]--> 
+    <table> 
+        <?php
+        $compteur = 1;
+        while ($row = $result->fetch_assoc()) {
+            
+            echo "<div class='project'>";
+            echo "<span>Avis n°$compteur : " .
+            "Ecrit par : n° ".$row["ID_MEMBRE"].
+            " le ".$row["DATE"];
+
+
+            echo "<p>".$row["AVIS"];
+            echo "</div>";
+            
+            $compteur+=1;
+            }
+        ?>
+
+    </table>
+    
+    <h4> Ajouter un avis </h4>
+    <form> 
+        <label>Avis</label>
+        <input id="avis_client" type="text">
+        <input type="submit" value="Valider">
+
+</body>
